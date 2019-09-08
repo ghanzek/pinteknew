@@ -13,9 +13,19 @@ add_action( 'wp_enqueue_scripts', 'load_scripts' );
 
 
 
-register_nav_menus(
-  array(
-    'my_main_menu' => 'Main menu',
-    'footer_menu' => 'Footer menu'
-  )
-);
+// Main configuration function
+function pintekweb_config(){
+
+	// Registering our menus
+	register_nav_menus(
+		array(
+			'my_main_menu' => 'Main Menu',
+			'footer_menu' => 'Footer Menu'
+		)
+	);
+
+	add_theme_support( 'post-thumbnails' );
+  add_theme_support( 'post-formats', array( 'video', 'image', 'gallery') );
+
+}
+add_action( 'after_setup_theme', 'pintekweb_config', 0 );
